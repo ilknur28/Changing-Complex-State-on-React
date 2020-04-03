@@ -4,32 +4,17 @@ function App() {
   const [contact, setContact] = useState({
     fName: " ",
     sName: " ",
-    email: " "
+    email: " ",
   });
 
   function handleContact(event) {
     const { value, name } = event.target;
 
     setContact(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          sName: prevValue.sName,
-          email: prevValue.email
-        };
-      } else if (name === "sName") {
-        return {
-          fName: prevValue.fName,
-          sName: value,
-          email: prevValue.email
-        };
-      } else if (name === "email"){
-        return {
-          fName: prevValue.fName,
-          sName: prevValue.sName,
-          email: value
-        }
-      }
+      return {
+        ...prevValue,
+        [name]: value,
+      };
     });
   }
 
